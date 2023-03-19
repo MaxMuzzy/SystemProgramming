@@ -11,6 +11,7 @@ public class Server : MonoBehaviour
     private bool isStarted = false;
     private byte error;
     List<int> connectionIDs = new List<int>();
+    Dictionary<int, string> users = new Dictionary<int, string>();
     public void StartServer()
     {
         NetworkTransport.Init();
@@ -46,13 +47,19 @@ public class Server : MonoBehaviour
                     break;
                 case NetworkEventType.ConnectEvent:
                     connectionIDs.Add(connectionId);
+                    users.Add(connectionId, "");
                     SendMessageToAll($"Player {connectionId} has connected.");
                     Debug.Log($"Player {connectionId} has connected.");
                     break;
                 case NetworkEventType.DataEvent:
                     string message = Encoding.Unicode.GetString(recBuffer, 0, dataSize);
-                    SendMessageToAll($"Player {connectionId}: {message}");
-                    Debug.Log($"Player {connectionId}: {message}");
+                    if (users[connectionId] == "")
+                        users[connectionId] = message;
+                    else
+                    {
+                        SendMessageToAll($"{users[connectionId]}: {message}");
+                        Debug.Log($"{users[connectionId]}: {message}");
+                    }
                     break;
                 case NetworkEventType.DisconnectEvent:
                     connectionIDs.Remove(connectionId);
