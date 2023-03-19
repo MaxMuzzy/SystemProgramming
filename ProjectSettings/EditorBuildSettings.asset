@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/HW3/Homework3.unity
+    guid: de699e06586eff644b34e0fbc197c732
   m_configObjects: {}
