@@ -19,10 +19,10 @@ public abstract class Character : NetworkBehaviour
     {
         OnUpdateAction?.Invoke();
     }
-    [Command]
+    /*[Command]
     protected void CmdUpdatePosition(Vector3 position)
     {
         serverPosition = position;
-    }
+    }*/
     public abstract void Movement();
 }
