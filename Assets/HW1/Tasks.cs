@@ -9,7 +9,7 @@ public class Tasks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CancellationTokenSource cancelTokenSource = new();
+        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
         CancellationToken cancelToken = cancelTokenSource.Token;
 
         Task task2 = Task2(cancelToken);
