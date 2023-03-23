@@ -23,7 +23,7 @@ public class SumPositionsVelocitiesJobExecutor : MonoBehaviour
             Velocities[i] = new Vector3(i+ 1, i + 2 , i);
         }
 
-        SumPositionsVelocitiesJob job = new()
+        SumPositionsVelocitiesJob job = new SumPositionsVelocitiesJob()
         {
             Positions = Positions,
             Velocities = Velocities,
